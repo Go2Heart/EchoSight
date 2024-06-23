@@ -1,0 +1,13 @@
+__pycache__/*
+*/__pycache__/*
+instructblip-vicuna-7b/*
+Qwen-VL-Chat/*
+knowledge_base/*
+*.jsonl
+*.csv
+*.pyc
+log/*
+data/cathedral_dataset/*
+e5_llava_hard_neg*
+data/*.json
+
