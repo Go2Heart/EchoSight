@@ -1,6 +1,4 @@
-export CUDA_VISIBLE_DEVICES=6
-TIME=`date +%m-%d-%H-%M`
-
+export CUDA_VISIBLE_DEVICES=0
 
 python -m test.test_reranker \
     --test_file /PATH/TO/TESTFILE\

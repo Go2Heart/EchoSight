@@ -1,6 +1,5 @@
 export CUDA_VISIBLE_DEVICES=0
 
-# torchrun --nnodes=1 --nproc_per_node=4  fine_tune_qformer_dp.py \
 python fine_tune_qformer.py \
    --blip-model-name 'blip2_reranker' \
    --num-epochs 20 \
@@ -15,5 +14,3 @@ python fine_tune_qformer.py \
    --negative_db_file /PATH/TO/NEGATIVE_DB_FILE \
    --inat_id2name /PATH/TO/INATURALISTS_ID2NAME \
    --save-training \
-   --validation-frequency 1 \
-   # --world-size 4 \ 
