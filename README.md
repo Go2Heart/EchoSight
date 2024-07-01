@@ -10,7 +10,7 @@ This is official repository of EchoSight: Advancing Visual-Language Models with 
 
 
 ## Requirements
-1. (Optional) Creating conda environment
+1. (Optional) Create conda environment
 
 ```bash
 conda create -n echosight python=3.10
@@ -30,6 +30,7 @@ bash train_reranker.sh
 ```
 ### Script Details
 The train_reranker.sh script is used to fine-tune the reranker module with specific parameters:
+
 --`blip-model-name`: Name of the BLIP model to be used for reranking.
 
 --`num-epochs`: Number of epochs for training. In this case, the model will be trained for 20 epochs.
@@ -60,7 +61,7 @@ The train_reranker.sh script is used to fine-tune the reranker module with speci
 ```bash
 bash test_reranker.sh
 ```
-Script Details
+### Script Details
 The test_reranker.sh script uses the following parameters for inference:
 
 --`test_file`: Path to the test file.
