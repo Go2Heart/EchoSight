@@ -32,10 +32,18 @@ def run(knowledge_base_path, faiss_index_path, **kwargs):
         preprocess = targetpad_transform(1.25, 224)
 
     def vqa(image, question):
-        top_k = retriever.retrieve_image_faiss(image, top_k=5)
+        top_k = retriever.retrieve_image_faiss(image, top_k=20)
         entries = [retrieved_entry["kb_entry"] for retrieved_entry in top_k]
+        entries = remove_list_duplicates(entries)
         seen = set()
-        retrieval_simlarities = [top_k[i]["similarity"] for i in range(5)]
+        retrieval_simlarities = [
+                top_k[i]["similarity"]
+                for i in range(20)
+                if not (top_k[i]["url"] in seen or seen.add(top_k[i]["url"]))
+            ]
+        
+        # retrieval_simlarities = [top_k[i]["similarity"] for i in range(20)]
+        
 
         if kwargs["use_reranker"]:
             reference_image = preprocess(image).to("cuda").unsqueeze(0)
@@ -53,11 +61,11 @@ def run(knowledge_base_path, faiss_index_path, **kwargs):
                     {"image": reference_image, "text_input": qformer_question},
                     mode="multimodal",
                 )["multimodal_embeds"]
-                for section_spilit in range(0, len(qformer_articles), 500):
+                for section_spilit in range(0, len(qformer_articles), 300):
                     article_embs = blip_model.extract_features(
                         {
                             "text_input": qformer_articles[
-                                section_spilit : section_spilit + 500
+                                section_spilit : section_spilit + 300
                             ]
                         },
                         mode="text",
@@ -96,22 +104,37 @@ def run(knowledge_base_path, faiss_index_path, **kwargs):
             reranked_sections = remove_list_duplicates(
                 [sections[i] for i in reranked_index]
             )
-            return answer_generator.llm_answering(
+            return reranked_sections[0], answer_generator.llm_answering(
                 question, entry_section=reranked_sections[0]
             )
         else:
-            return answer_generator.llm_answering(question, entry=entries[0])
+            return entries[0], answer_generator.llm_answering(question, entry=entries[0])
 
     # Create Gradio interface
+
     interface = gr.Interface(
         fn=vqa,
         inputs=[
-            gr.Image(type="pil"),
-            gr.Textbox(lines=1, placeholder="Ask a question about the image"),
+            gr.Image(type="pil", label="Upload Image"),
+            gr.Textbox(lines=1, placeholder="Type your question here...", label="Question"),
         ],
-        outputs="text",
-        title="Visual Question Answering Chatbot",
-        description="Upload an image and ask a question about it. The chatbot will provide an answer based on the content of the image.",
+        outputs=[
+            # markdown text for showing the retrieved section
+            gr.Markdown(label="Retrieved Section"),
+            gr.Textbox(lines=4, label="Answer"),
+        ],
+        title="✨EchoSight✨: Knowledge-based Visual Question Answering System",
+        description="Upload an image and ask a question about it. ✨EchoSight✨ will provide a retrieved section and an answer based on the retrieval results.",
+        examples=[
+            ["demo/example1.png", "In addition to expositions, rock concerts, conferences and courses, what else does this building host?"],
+            ["demo/example2.png", "Who designed this museum?"],
+            ["demo/example3.png", "In which country is this mountain located?"],
+            ["demo/example4.png", "What has bulgaria traditionally used this plant for?"],
+            ["demo/example5.png", "How do the upper and undersides of the female of this butterfly compare to those of the male?"],
+        ],
+        theme="default",
+        allow_flagging="never",
+        live=False
     )
 
     # Launch the interface
@@ -119,17 +142,12 @@ def run(knowledge_base_path, faiss_index_path, **kwargs):
 
 
 if __name__ == "__main__":
-
     app_config = {
         "use_reranker": True,
         "retriever_vit": "eva-clip",
-        "knowledge_base_path": "/root/RAVLM/knowledge_base/encyclopedic_kb_wiki.json",
-        "faiss_index_path": "/raid/yibinyan/FAISS_INDEX/EVA-CLIP/evqa_index_full/",
-        "qformer_ckpt_path": "/remote-home/yibinyan/EchoSight/reranker.pth",
-        "llm_ckpt": "/remote-home/share/huggingface_model/Mistral-7B-Instruct-v0.2",
-        # "knowledge_base_path": "/PATH/TO/KNOWLEDGE_BASE_FAISS_JSON",
-        # "faiss_index_path": "/PATH/TO/KNOWLEDGE_BASE_FAISS_INDEX/",
-        # "qformer_ckpt_path": "/PATH/TO/QFORMER_CHECKPOINT",
-        # "llm_ckpt":"/PATH/TO/LLM_CHECKPOINT" # Mistral-7B is the default model
+        "knowledge_base_path": "/PATH/TO/KNOWLEDGE_BASE_FAISS_JSON",
+        "faiss_index_path": "/PATH/TO/KNOWLEDGE_BASE_FAISS_INDEX/",
+        "qformer_ckpt_path": "/PATH/TO/QFORMER_CHECKPOINT",
+        "llm_ckpt":"/PATH/TO/LLM_CHECKPOINT" # Mistral-7B is the default model
     }
     run(**app_config)

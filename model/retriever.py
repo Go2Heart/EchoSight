@@ -6,7 +6,7 @@ import torch
 import tqdm
 import pickle
 import json
-from transformers import AutoModel, AutoProcessor, CLIPVisionModel, CLIPImageProcessor
+from transformers import AutoModel, AutoProcessor, CLIPVisionModel, CLIPImageProcessor, AutoTokenizer
 import faiss
 import numpy as np
 from faiss import write_index, read_index
@@ -262,7 +262,7 @@ class ClipRetriever(Retriever):
             )
         elif model == "eva-clip":
             self.model = AutoModel.from_pretrained(
-                "BAAI/EVA-CLIP-8B",  # TODO change into config
+                "BAAI/EVA-CLIP-8B",
                 torch_dtype=torch.float16,
                 trust_remote_code=True,
             )
@@ -448,6 +448,41 @@ class ClipRetriever(Retriever):
 
         return
 
+
+    def built_text_embedding(self, text_faiss_path):
+        """Build the text mathcing faiss index from the knowledge base.
+        
+        Score is calculated by cosine similarity between the image and article text embeddings.
+        
+        Args:
+            text_faiss_path: The path to save the text faiss index.
+        """
+        tokenizer = AutoTokenizer.from_pretrained("openai/clip-vit-large-patch14")
+        kb_text = []
+        for entry in self.knowledge_base:
+            text = entry.title 
+            for section in entry.section_texts:
+                text += "\n" + section 
+                break# only use the first section
+            kb_text.append(text)
+        inputs = tokenizer(kb_text, return_tensors="pt", padding=True, truncation=True).to(self.device)
+        batch_size = 512
+        outputs = []
+        for i in range(0, len(kb_text), batch_size):
+            text_inputs = {k: v[i:i+batch_size] for k, v in inputs.items()}
+            output = self.model.get_text_features(**text_inputs)
+            outputs.extend(output.cpu().detach().numpy())
+        # build the faiss index
+        index = faiss.IndexFlatIP(outputs[0].shape[0])
+        np_outputs = np.array(outputs)
+        np_outputs = np_outputs.astype(np.float32)
+        faiss.normalize_L2(np_outputs)
+        index.add(np_outputs)
+        self.faiss_index = index
+        self.faiss_index_ids = [i for i in range(len(kb_text))]
+        self.save_faiss_index(text_faiss_path)
+        return
+    
     @torch.no_grad()
     def retrieve_image_faiss(
         self, image, top_k=100, pool_method="max", return_entry_list=False
