@@ -79,6 +79,14 @@ The test_reranker.sh script uses the following parameters for inference:
 
 --`qformer_ckpt_path`: Path to the QFormer checkpoint file.
 
+--`perform_qformer_reranker`: Flag to perform the ultimate VQA.
+
+--`save_result`: Flag to save the inference result.
+
+--`save_result_path`: Path to the result json file would be saved.
+
+--`resume_from`: Path to the retrieval result. If this parameter is used, the inference process will load the saved retrieval result, instead of using the retriever on-the-fly.
+
 ## Demo
 Run the demo of EchoSight.
 ```bash
@@ -88,6 +96,7 @@ python app.py
 <img width="1267" alt="image" src="https://github.com/Go2Heart/EchoSight/assets/71871209/7daa8ee7-5b3d-4789-ba43-16c481471b77">
 
 <img width="1267" alt="image" src="https://github.com/Go2Heart/EchoSight/assets/71871209/77d04711-93fc-4944-a465-92ebe643d4b5">
+
 ## Citation
 
 ## Acknowledgements
