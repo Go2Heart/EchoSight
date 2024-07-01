@@ -64,12 +64,19 @@ Script Details
 The test_reranker.sh script uses the following parameters for inference:
 
 --`test_file`: Path to the test file.
+
 --`knowledge_base`: Path to the knowledge base JSON file.
+
 --`faiss_index`: Path to the FAISS index file for efficient similarity search.
+
 --`retriever_vit`: Name of the visual transformer model used for initial retrieval. In the example script, eva-clip is used.
+
 --`top_ks`: Comma-separated list of top-k recall results for retrieval (e.g., 1,5,10,20).
+
 --`retrieval_top_k`: The top-k value used for retrieval.
+
 --`perform_qformer_reranker`: Flag to perform reranking using QFormer.
+
 --`qformer_ckpt_path`: Path to the QFormer checkpoint file.
 
 ## Demo
