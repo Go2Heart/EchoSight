@@ -28,7 +28,7 @@ To train the multimodal reranker, run the bash script after changing the necessa
 ```bash
 bash train_reranker.sh
 ```
-**Script Details**
+### Script Details
 The train_reranker.sh script is used to fine-tune the reranker module with specific parameters:
 --`blip-model-name`: Name of the BLIP model to be used for reranking.
 
@@ -55,14 +55,32 @@ The train_reranker.sh script is used to fine-tune the reranker module with speci
 --`inat_id2name`: Path to the iNaturalist ID to name mapping file.
 
 --`save-training`: Flag to save the training progress.
-
-
-
-
 ## Inference
+To perform inference with the trained model, run the provided test_reranker.sh script after adjusting the necessary parameters.
+```bash
+bash test_reranker.sh
+```
+Script Details
+The test_reranker.sh script uses the following parameters for inference:
+
+--`test_file`: Path to the test file.
+--`knowledge_base`: Path to the knowledge base JSON file.
+--`faiss_index`: Path to the FAISS index file for efficient similarity search.
+--`retriever_vit`: Name of the visual transformer model used for initial retrieval. In the example script, eva-clip is used.
+--`top_ks`: Comma-separated list of top-k recall results for retrieval (e.g., 1,5,10,20).
+--`retrieval_top_k`: The top-k value used for retrieval.
+--`perform_qformer_reranker`: Flag to perform reranking using QFormer.
+--`qformer_ckpt_path`: Path to the QFormer checkpoint file.
 
 ## Demo
+Run the demo of EchoSight.
+```bash
+python app.py
+```
+### Demo Showcase
+<img width="1267" alt="image" src="https://github.com/Go2Heart/EchoSight/assets/71871209/7daa8ee7-5b3d-4789-ba43-16c481471b77">
 
+<img width="1267" alt="image" src="https://github.com/Go2Heart/EchoSight/assets/71871209/77d04711-93fc-4944-a465-92ebe643d4b5">
 ## Citation
 
 ## Acknowledgements
