@@ -40,7 +40,7 @@ The VQA questions can be downloaded in .csv format here(Provided by Encyclopedic
 
 To download the images in Encyclopedic-VQA:
 
-- [iNaturalist 2021](https://github.com/visipedia/inat_comp/tree/master/2021)
+- [iNaturalist 2021](https://github.com/visipedia/inat_comp/tree/master/2021)(Also put id2name file in the same folder, which can be downloaded from [train_id2name](https://drive.google.com/file/d/1cUP0sWtI4z7whH9V5FOvqfJ0LTxZLOd9/view?usp=drive_link) and [val_id2name](https://drive.google.com/file/d/1cYzo4qewPABFuoMhpME4j2DWAA_Y-l2L/view?usp=drive_link))
 
 - [Google Landmarks Dataset V2](https://github.com/cvdfoundation/google-landmark)
 
@@ -128,7 +128,7 @@ The test_reranker.sh script uses the following parameters for inference:
 ```bash
 bash scripts/test_vqa.sh
 ```
-3. (Optional) Run the batch inference vqa script(Releasing Soon).
+3. (Optional) Run the batch inference vqa script (Releasing Soon).
 ### Script Details
 The test_vqa.sh script uses the following parameters for inference:
 
@@ -154,10 +154,6 @@ python app.py
 ## Citation
 
 ## Acknowledgements
-
-## Release TODOs
-1. update knowledge base & faiss index
-2. infoseek training and testing file in EVQA-format
-3. inaturalists id2name
+Thanks to the code of [LAVIS](https://github.com/salesforce/LAVIS/tree/main) and data of [Encyclopedic-VQA](https://github.com/google-research/google-research/tree/master/encyclopedic_vqa) and [InfoSeek](https://github.com/open-vision-language/infoseek).
 
 
