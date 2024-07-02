@@ -351,7 +351,6 @@ if __name__ == "__main__":
         "checkpoint_path": args.checkpoint_path,
         "blip2_checkpoint_path": args.blip2_checkpoint_path,
         "save_frequency": args.save_frequency,
-        "data_path": args.data_path,
         "train_file": args.train_file,
         "eval_file": args.eval_file,
         "knowledge_base_file": args.knowledge_base_file,

@@ -21,12 +21,48 @@ conda activate echosight
 ```bash
 pip install -r requirements.txt
 ```
+## Knowledge Base
+We provide the knowledge bases used in EchoSight. The knowledge base file is the same format as the Encyclopedic-VQA dataset. Apart from the original 2M knowledge base for Encyclopedic-VQA, we also provide a 100K knowledge base for InfoSeek, which is a filtered subset of the 2M knowledge base. The knowledge base files can be downloaded from the following links:
+### Enclyclopedic-VQA
+- [Encylopedic-VQA's 2M Knowledge Base](https://storage.googleapis.com/encyclopedic-vqa/encyclopedic_kb_wiki.zip)
+- [Enclopedic-VQA KB Images Faiss Index](https://drive.google.com/file/d/1cQYul-my2FtqfCND2FeqgF9TCMU3u5xz/view?usp=drive_link)
+### Infoseek
+- [Our InfoSeek's 100K Knowledge Base ](https://drive.google.com/file/d/1cIbKtYryD7XBAw0tjrrCvMCJC2rIzLM5/view?usp=drive_link)
+- [InfoSeek KB Images Faiss Index](https://drive.google.com/file/d/1cDuL45c1iYwB0_BSlTmrMzbEE8ik2cVJ/view?usp=drive_link)
+
+## VQA Questions
+### Encyclopedic VQA
+The VQA questions can be downloaded in .csv format here(Provided by Encyclopedic-VQA):
+
+*   [train.csv](https://storage.googleapis.com/encyclopedic-vqa/train.csv)
+*   [val.csv](https://storage.googleapis.com/encyclopedic-vqa/val.csv)
+*   [test.csv](https://storage.googleapis.com/encyclopedic-vqa/test.csv)
+
+To download the images in Encyclopedic-VQA:
+
+- [iNaturalist 2021](https://github.com/visipedia/inat_comp/tree/master/2021)
+
+- [Google Landmarks Dataset V2](https://github.com/cvdfoundation/google-landmark)
+
+### InfoSeek
+The VQA questions of InfoSeek are transformed to E-VQA format from the original InfoSeek dataset. Due to the The questions can be downloaded in .csv format here:
+* [train.csv](https://drive.google.com/file/d/1cQiQmdFq8_8gsaZPsmzKzIjZhdcd_kxP/view?usp=drive_link)
+* [test.csv](https://drive.google.com/file/d/1cSG_dVuao9lKZy8vaUDWEo7mIHowjUeE/view?usp=drive_link)
+
+To download the images in InfoSeek:
+
+- [Oven](https://github.com/edchengg/oven_eval/tree/main/image_downloads)
+
 ## Training
 The multimodal reranker of EchoSight is trained using Encyclopedic-VQA datasets and the corresponding 2M Knowledge Base.
 
+For Infoseek training file, we use the same format as Encyclopedic-VQA. The training file can be downloaded from the following link:
+- [InfoSeek Training File]()
+
+
 To train the multimodal reranker, run the bash script after changing the necessary configurations.
 ```bash
-bash train_reranker.sh
+bash scripts/train_reranker.sh
 ```
 ### Script Details
 The train_reranker.sh script is used to fine-tune the reranker module with specific parameters:
@@ -59,7 +95,7 @@ The train_reranker.sh script is used to fine-tune the reranker module with speci
 ## Inference
 1. To perform inference with the trained model, run the provided test_reranker.sh script after adjusting the necessary parameters.
 ```bash
-bash test_reranker.sh
+bash scripts/test_reranker.sh
 ```
 ### Script Details
 The test_reranker.sh script uses the following parameters for inference:
@@ -89,10 +125,22 @@ The test_reranker.sh script uses the following parameters for inference:
 --`resume_from`: Path to the retrieval result. If this parameter is used, the inference process will load the saved retrieval result, instead of using the retriever on-the-fly.
 
 2. (Optional) With the saved retrieval or reranked results, an answer generation can be performed standalone.
+```bash
+bash scripts/test_vqa.sh
 ```
+3. (Optional) Run the batch inference vqa script(Releasing Soon).
+### Script Details
+The test_vqa.sh script uses the following parameters for inference:
 
-```
+--`test_file`: Path to the test file.
 
+--`retrieval_results`: Path to the retrieval result file.
+
+--`answer_generator`: Name of the answer generator model to be used. Choose from [Mistral, LLaMA3, GPT4, PaLM].
+
+--`llm_checkpoint`: Path to the Mistral or LLaMA3 checkpoint file. If using GPT4 or PaLM, this parameter is not needed. Instead, change api_key in model/anwser_generator.py.
+
+--`output_file`: Path to the output file. Default is ./answer.json.
 ## Demo
 Run the demo of EchoSight.
 ```bash

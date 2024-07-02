@@ -1,6 +1,6 @@
 export CUDA_VISIBLE_DEVICES=0
 
-python fine_tune_qformer.py \
+python fine_tune_reranker.py \
    --blip-model-name 'blip2_reranker' \
    --num-epochs 20 \
    --num-workers 4 \
