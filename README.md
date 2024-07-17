@@ -1,5 +1,6 @@
 # EchoSight: Advancing Visual-Language Models with Wiki Knowledge
-This is official repository of EchoSight: Advancing Visual-Language Models with Wiki Knowledge
+This is official repository of EchoSight: Advancing Visual-Language Models with Wiki Knowledge.
+[[Project Page]](https://go2heart.github.io/echosight) [[Paper]]()
 <img width="1728" alt="image" src="https://github.com/Go2Heart/EchoSight/assets/71871209/c9eb99d2-fc90-469f-ac69-5f28093863ab">
 
 <img width="1728" alt="image" src="https://github.com/Go2Heart/EchoSight/assets/71871209/4257097c-b7d0-4c8f-9436-b5f18253bd13">
