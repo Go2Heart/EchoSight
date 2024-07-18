@@ -155,7 +155,17 @@ python app.py
 <img width="1267" alt="image" src="https://github.com/Go2Heart/EchoSight/assets/71871209/77d04711-93fc-4944-a465-92ebe643d4b5">
 
 ## Citation
-
+```
+@misc{yan2024echosightadvancingvisuallanguagemodels,
+      title={EchoSight: Advancing Visual-Language Models with Wiki Knowledge}, 
+      author={Yibin Yan and Weidi Xie},
+      year={2024},
+      eprint={2407.12735},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2407.12735}, 
+}
+```
 ## Acknowledgements
 Thanks to the code of [LAVIS](https://github.com/salesforce/LAVIS/tree/main) and data of [Encyclopedic-VQA](https://github.com/google-research/google-research/tree/master/encyclopedic_vqa) and [InfoSeek](https://github.com/open-vision-language/infoseek).
 
