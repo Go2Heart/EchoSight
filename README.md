@@ -1,5 +1,5 @@
 # EchoSight: Advancing Visual-Language Models with Wiki Knowledge
-This is official repository of EchoSight: Advancing Visual-Language Models with Wiki Knowledge.
+This is official PyTorch implementation of EchoSight: Advancing Visual-Language Models with Wiki Knowledge.
 
 [[Project Page]](https://go2heart.github.io/echosight) [[Paper]](https://arxiv.org/abs/2407.12735)
 
