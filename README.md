@@ -96,9 +96,7 @@ The train_reranker.sh script is used to fine-tune the reranker module with speci
 
 --`save-training`: Flag to save the training progress.
 ## Inference
-0. We release the reranker module weights as follow
-
-[[Checkpoint]](https://drive.google.com/file/d/1d6QOyePuvHLlYxC1_Dvxvij3wNm3gOB9/view?usp=sharing).
+0. Our reranker module weights can be downloaded at [[Checkpoint]](https://drive.google.com/file/d/1d6QOyePuvHLlYxC1_Dvxvij3wNm3gOB9/view?usp=sharing).
 
 2. To perform inference with the trained model, run the provided test_reranker.sh script after adjusting the necessary parameters.
 ```bash
