@@ -57,10 +57,8 @@ To download the images in InfoSeek:
 - [Oven](https://github.com/edchengg/oven_eval/tree/main/image_downloads)
 
 ## Training
-The multimodal reranker of EchoSight is trained using Encyclopedic-VQA datasets and the corresponding 2M Knowledge Base.
-
-For Infoseek training file, we use the same format as Encyclopedic-VQA. The training file can be downloaded from the following link:
-- [InfoSeek Training File]()
+The multimodal reranker of EchoSight is trained using Encyclopedic-VQA datasets and the corresponding 2M Knowledge Base. If you want to enable Hard Negative Sampling when training the reranker, we provide our Hard_Neg result sampled by Eva-CLIP here:
+- [Hard Negative Sampling File](https://drive.google.com/file/d/1i8AzqyqG_QH0wCFHXgZzjt7tLbLWz616/view?usp=drive_link)
 
 
 To train the multimodal reranker, run the bash script after changing the necessary configurations.
