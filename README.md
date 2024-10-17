@@ -141,7 +141,7 @@ The test_vqa.sh script uses the following parameters for inference:
 
 --`answer_generator`: Name of the answer generator model to be used. Choose from [Mistral, LLaMA3, GPT4, PaLM].
 
---`llm_checkpoint`: Path to the Mistral or LLaMA3 checkpoint file. If using GPT4 or PaLM, this parameter is not needed. Instead, change api_key in model/anwser_generator.py.
+--`llm_checkpoint`: Path to the [Mistral](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) or [LLaMA3](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) checkpoint file. If using GPT4 or PaLM, this parameter is not needed. Instead, change api_key in model/anwser_generator.py.
 
 --`output_file`: Path to the output file. Default is ./answer.json.
 ## Demo
