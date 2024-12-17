@@ -48,7 +48,7 @@ To download the images in Encyclopedic-VQA:
 - [Google Landmarks Dataset V2](https://github.com/cvdfoundation/google-landmark)
 
 ### InfoSeek
-The VQA questions of InfoSeek are transformed to E-VQA format from the original InfoSeek dataset. Due to the The questions can be downloaded in .csv format here:
+The VQA questions of InfoSeek are transformed to E-VQA format from the original InfoSeek dataset. The questions can be downloaded in .csv format here:
 * [train.csv](https://drive.google.com/file/d/1cQiQmdFq8_8gsaZPsmzKzIjZhdcd_kxP/view?usp=drive_link)
 * [test.csv](https://drive.google.com/file/d/1cSG_dVuao9lKZy8vaUDWEo7mIHowjUeE/view?usp=drive_link)
 
