@@ -35,9 +35,9 @@ We provide the knowledge bases used in EchoSight. The knowledge base file is the
 
 ## VQA Questions
 ### Encyclopedic VQA
-The VQA questions can be downloaded in .csv format here(Provided by Encyclopedic-VQA):
+The VQA questions can be downloaded in .csv format here(the val and test set is provided by Encyclopedic-VQA, while the training is our cleaned version due to some missings in the repackaged image pixels):
 
-*   [train.csv](https://storage.googleapis.com/encyclopedic-vqa/train.csv)
+*   [train.csv](https://drive.google.com/file/d/13BZZAserLlqKT_RHq4sX5NAIu7Ii77eE/view?usp=drive_link)
 *   [val.csv](https://storage.googleapis.com/encyclopedic-vqa/val.csv)
 *   [test.csv](https://storage.googleapis.com/encyclopedic-vqa/test.csv)
 
