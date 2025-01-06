@@ -28,7 +28,7 @@ pip install -r requirements.txt
 We provide the knowledge bases used in EchoSight. The knowledge base file is the same format as the Encyclopedic-VQA dataset. Apart from the original 2M knowledge base for Encyclopedic-VQA, we also provide a 100K knowledge base for InfoSeek, which is a filtered subset of the 2M knowledge base. The knowledge base files can be downloaded from the following links:
 ### Enclyclopedic-VQA
 - [Encylopedic-VQA's 2M Knowledge Base](https://storage.googleapis.com/encyclopedic-vqa/encyclopedic_kb_wiki.zip)
-- [Enclopedic-VQA KB Images Faiss Index](https://drive.google.com/file/d/1cQYul-my2FtqfCND2FeqgF9TCMU3u5xz/view?usp=drive_link)
+- [Enclopedic-VQA KB Images Faiss Index](https://drive.google.com/file/d/1BMaOFq1TVfLn7-gdMhoVkd9w_9wQzY7q/view?usp=drive_link)
 ### Infoseek
 - [Our InfoSeek's 100K Knowledge Base ](https://drive.google.com/file/d/1cIbKtYryD7XBAw0tjrrCvMCJC2rIzLM5/view?usp=drive_link)
 - [InfoSeek KB Images Faiss Index](https://drive.google.com/file/d/1cDuL45c1iYwB0_BSlTmrMzbEE8ik2cVJ/view?usp=drive_link)
