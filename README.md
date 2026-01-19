@@ -28,29 +28,29 @@ pip install -r requirements.txt
 We provide the knowledge bases used in EchoSight. The knowledge base file is the same format as the Encyclopedic-VQA dataset. Apart from the original 2M knowledge base for Encyclopedic-VQA, we also provide a 100K knowledge base for InfoSeek, which is a filtered subset of the 2M knowledge base. The knowledge base files can be downloaded from the following links:
 ### Enclyclopedic-VQA
 - [Encylopedic-VQA's 2M Knowledge Base](https://storage.googleapis.com/encyclopedic-vqa/encyclopedic_kb_wiki.zip)
-- [Enclopedic-VQA KB Images Faiss Index](https://drive.google.com/file/d/1BMaOFq1TVfLn7-gdMhoVkd9w_9wQzY7q/view?usp=drive_link)
+- [Enclopedic-VQA KB Images Faiss Index](https://www.dropbox.com/scl/fi/hphfse044hfvlnexs4k6s/evqa_2M_faiss_index.zip?rlkey=glrb8lcpd62rqpca2l2tawd4f&st=f8kuwlhy&dl=0)
 ### Infoseek
-- [Our InfoSeek's 100K Knowledge Base ](https://drive.google.com/file/d/1cIbKtYryD7XBAw0tjrrCvMCJC2rIzLM5/view?usp=drive_link)
-- [InfoSeek KB Images Faiss Index](https://drive.google.com/file/d/1cDuL45c1iYwB0_BSlTmrMzbEE8ik2cVJ/view?usp=drive_link)
+- [Our InfoSeek's 100K Knowledge Base ](https://www.dropbox.com/scl/fi/dz37pfa3p6ikv9bcrwv12/infoseek_100k_wiki.zip?rlkey=vnffwca4ojlq4v3fvdxmzlaih&st=yrzi7c1b&dl=0)
+- [InfoSeek KB Images Faiss Index](https://www.dropbox.com/scl/fi/dagf0ss39697kq4w0rsli/infoseek_100k_faiss_index.zip?rlkey=cm069zdhnss4xqx5tgy8iaz23&st=fm603c8o&dl=0)
 
 ## VQA Questions
 ### Encyclopedic VQA
 The VQA questions can be downloaded in .csv format here(the val and test set is provided by Encyclopedic-VQA, while the training is our cleaned version due to some missings in the repackaged image pixels):
 
-*   [train.csv](https://drive.google.com/file/d/13BZZAserLlqKT_RHq4sX5NAIu7Ii77eE/view?usp=drive_link)
+*   [train.csv](https://www.dropbox.com/scl/fi/a954bgai9fafvqpfl6ik8/train_full_image_cleaned.csv?rlkey=wpwmnbkibbt48zygmhdri3h77&st=72ixocy2&dl=0)
 *   [val.csv](https://storage.googleapis.com/encyclopedic-vqa/val.csv)
 *   [test.csv](https://storage.googleapis.com/encyclopedic-vqa/test.csv)
 
 To download the images in Encyclopedic-VQA:
 
-- [iNaturalist 2021](https://github.com/visipedia/inat_comp/tree/master/2021)(Also put id2name file in the same folder, which can be downloaded from [train_id2name](https://drive.google.com/file/d/1cUP0sWtI4z7whH9V5FOvqfJ0LTxZLOd9/view?usp=drive_link) and [val_id2name](https://drive.google.com/file/d/1cYzo4qewPABFuoMhpME4j2DWAA_Y-l2L/view?usp=drive_link))
+- [iNaturalist 2021](https://github.com/visipedia/inat_comp/tree/master/2021)(Also put id2name file in the same folder, which can be downloaded from [train_id2name](https://www.dropbox.com/scl/fi/n3jqliyfcpsvn5nso422e/train_id2name.json?rlkey=c0xzyejqacc8hebbci3b8pj3h&st=v5yo2g93&dl=0) and [val_id2name](https://www.dropbox.com/scl/fi/stqfcltlei3j3qlqh7hv3/val_id2name.json?rlkey=a1e1xn2uv70rig3p8u9pf4vdc&st=1l7leqso&dl=0)
 
 - [Google Landmarks Dataset V2](https://github.com/cvdfoundation/google-landmark)
 
 ### InfoSeek
 The VQA questions of InfoSeek are transformed to E-VQA format from the original InfoSeek dataset. The questions can be downloaded in .csv format here:
-* [train.csv](https://drive.google.com/file/d/1cQiQmdFq8_8gsaZPsmzKzIjZhdcd_kxP/view?usp=drive_link)
-* [test.csv](https://drive.google.com/file/d/1cSG_dVuao9lKZy8vaUDWEo7mIHowjUeE/view?usp=drive_link)
+* [train.csv](https://www.dropbox.com/scl/fi/lh9b6u62eh391d1fn74pn/infoseek_train_filtered.csv?rlkey=lgfh7fr0ycsgw9x6kk5ym086n&st=8cw6styg&dl=0)
+* [test.csv](https://www.dropbox.com/scl/fi/o2drl5usos02370jptnn0/infoseek_test_filtered.csv?rlkey=459z1tcq2viw2r0c1l12s54uw&st=2m8ujpte&dl=0)
 
 To download the images in InfoSeek:
 
@@ -58,7 +58,7 @@ To download the images in InfoSeek:
 
 ## Training
 The multimodal reranker of EchoSight is trained using Encyclopedic-VQA datasets and the corresponding 2M Knowledge Base. If you want to enable Hard Negative Sampling when training the reranker, we provide our Hard_Neg result sampled by Eva-CLIP here:
-- [Hard Negative Sampling File](https://drive.google.com/file/d/1i8AzqyqG_QH0wCFHXgZzjt7tLbLWz616/view?usp=drive_link)
+- [Hard Negative Sampling File](https://www.dropbox.com/scl/fi/ft9xkmo4t2p5vmkrk8uko/E_VQA_Hard_Neg.json?rlkey=brzvzcrd7tsxkm1t778d0nwd6&st=ljz3tu3r&dl=0)
 
 
 To train the multimodal reranker, run the bash script after changing the necessary configurations.
@@ -94,7 +94,7 @@ The train_reranker.sh script is used to fine-tune the reranker module with speci
 
 --`save-training`: Flag to save the training progress.
 ## Inference
-0. Our reranker module weights can be downloaded at [[Checkpoint]](https://drive.google.com/file/d/1d6QOyePuvHLlYxC1_Dvxvij3wNm3gOB9/view?usp=sharing).
+0. Our reranker module weights can be downloaded at [[Checkpoint]](https://www.dropbox.com/scl/fi/qudkqxocz1n2zse9y5mxm/reranker.pth?rlkey=fz2x2r09qetvuxu1zogxf2vkj&st=tvtuql0h&dl=0).
 
 2. To perform inference with the trained model, run the provided test_reranker.sh script after adjusting the necessary parameters.
 ```bash
